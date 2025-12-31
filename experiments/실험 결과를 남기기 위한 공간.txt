@@ -1,0 +1,7 @@
+experiments/
+├─ exp_vocab_30k/
+│  ├─ config.yaml
+│  ├─ train.log
+│  └─ notes.md
+├─ exp_context_512/
+└─ exp_lr_sweep/

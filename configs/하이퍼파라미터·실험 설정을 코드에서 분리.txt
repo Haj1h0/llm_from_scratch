@@ -1,0 +1,13 @@
+├─ model.yaml
+├─ train.yaml
+└─ tokenizer.yaml
+
+예:
+
+yaml
+코드 복사
+# config/model.yaml
+n_layers: 6
+n_heads: 8
+d_model: 512
+context_length: 1024

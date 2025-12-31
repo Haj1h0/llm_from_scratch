@@ -1,0 +1,10 @@
+학습된 모델로 텍스트 생성만 담당하는 엔트리 포인트
+
+src/
+├─ model.py
+├─ tokenizer.py
+├─ train.py
+└─ generate.py
+
+왜 분리하냐?
+학습 코드 ≠ 추론 코드

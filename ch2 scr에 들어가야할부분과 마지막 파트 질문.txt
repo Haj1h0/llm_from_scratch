@@ -1,0 +1,42 @@
+1) ch2.ipynb 셀을 “어디로 옮길지” 기준으로 분해
+A. 노트북에만 남길 것(실험/설명)
+
+!pip install tiktoken (cell 0)
+
+버전 출력 (cell 1)
+
+파일 다운로드/로드 및 샘플 출력 (cell 2~3)
+
+정규식 split 실험 (cell 4~9)
+
+vocab 출력/확인용 print (cell 10~12)
+
+SimpleTokenizerV1 테스트/출력 (cell 14~16)
+
+tiktoken 사용/allowed_special 실험 (cell 24~27)
+
+중간 확인용 print/설명 셀들
+
+B. src/로 뺄 것(추후 단원에서 import해서 쓰는 재사용 코드)
+
+직접 구현 토크나이저(UNK 포함 버전)
+
+special token vocab 구성(cell 17) + SimpleTokenizerV2(cell 20) → src/tokenizer.py
+
+슬라이딩 윈도우 Dataset + DataLoader
+
+GPTDatasetV1(cell 34) + create_dataloader_v1(cell 35) → src/data.py
+
+C. docs/로 뺄 것(개념 요약)
+
+“직접 구현 토크나이저 vs tiktoken(바이트 BPE)” 차이
+
+“정규화”를 사용자가 어디서 신경 써야 하는지(직접 구현 쪽은 전처리 일관성)
+
+stride/max_length 의미(슬라이딩 윈도우)
+
+마지막에 절대위치값 이거 arange 뭐시기 잘 이해안돼,, 
+일단 부족한 실습이랑 부족한 코드는 마지막에 context size더 자게 들어왔을때 브로드캐스팅 삑나는거 방지코드
+필요하다는거랑
+이미 torch로 context size만 넣어서 절대위치임베딩룩업테이블? 만들었는데
+arange왜 또 한번 쓰라는지랑,,

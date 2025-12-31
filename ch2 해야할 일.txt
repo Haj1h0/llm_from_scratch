@@ -1,0 +1,50 @@
+ch2
+tokenizer.py로 주코드 옮기기
+설명 주석처리한 건 notebook
+다른 모델에서도 쓸만한 util코드 는 util
+docs에 개념정리
+
+ch2에서 옮길 대상 확정(필수) src/tokenizer.py (재사용 코드만)
+SimpleTokenizer(또는 책에서 만든 토크나이저 클래스)
+build_vocab(...) 같은 vocab 생성 함수(있다면)
+save_vocab(path) / load_vocab(path) (강추: 나중에 재현성 확보됨)
+최소한의 전처리 함수(예: basic_normalize(text))
+원칙: “encode/decode가 동작” + “vocab 저장/로드 가능”까지만
+
+2) notebooks/에 남길 것(설명/실험 흔적)
+왜 split을 이렇게 하는지 설명
+중간 출력(print), 샘플 텍스트로 encode/decode 확인
+OOV 처리 실험
+vocab 크기 변화 실험
+(있으면) tiktoken과 비교 실험
+노트북은 “증명/메모/실험 로그”로 남기면 된다.
+
+3) src/utils.py는 “지금 당장” 뭘 넣어야 하나?
+ch2에서는 억지로 만들 필요 없다.
+다만 아래가 실제로 2번 이상 반복되면 그때 utils로 올려라.
+텍스트 파일 읽기 함수
+read_text(path, encoding="utf-8")
+seed 고정
+set_seed(42) (torch/numpy/random)
+경로 유틸
+project_root() 같은 것(필요할 때만)
+
+주의: ch2 단계에서 utils에 이것저것 넣으면 오히려 관리 난이도 올라간다.
+
+4) docs/는 어디까지? (권장 범위)
+ch2에서는 docs/ch2_tokenizer.md 하나로 충분.
+포함하면 좋은 항목(짧게):
+토크나이저가 하는 일(문자열 ↔ 토큰 ID)
+vocab이 뭔지 / OOV 처리 방식
+encode/decode 흐름 그림(텍스트로 간단히)
+“내 구현의 한계(whitespace split 등)” 한 줄
+
+5) ch2 옮길 때 사람들이 자주 “빠뜨리는 것” 4개
+special tokens 정의
+<UNK>, <PAD>, <BOS>, <EOS> 중 최소 <UNK>는 필요
+vocab 저장/로드
+안 해두면 다음 장에서 재현이 흔들림
+정규화 일관성
+encode()에서 한 정규화를 build_vocab()에서도 동일하게 적용
+책 코드에서 쓰던 인터페이스 유지
+다음 장 코드가 tokenizer.encode(text) 형태면 그대로 맞추기
