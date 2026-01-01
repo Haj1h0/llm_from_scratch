@@ -1,0 +1,5 @@
+cd C:\Users\jh\Git\llm_from_scratch
+git status
+git pull
+.\.venv\Scripts\activate
+python -m jupyterlab
