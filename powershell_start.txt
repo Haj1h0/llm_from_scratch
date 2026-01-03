@@ -3,3 +3,21 @@ git status
 git pull
 .\.venv\Scripts\activate
 python -m jupyterlab
+
+git status
+git add .
+git commit -m "Init ML repo structure + venv setup"
+git push
+
+시작 
+cd C:\Users\jh\Git\<레포폴더명>
+git pull
+.\.venv\Scripts\activate
+code .
+
+종료 
+git status
+git add .
+git commit -m "ch2 notebook progress"
+git push
+deactivate
